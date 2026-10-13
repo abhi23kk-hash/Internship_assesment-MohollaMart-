@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohalla Mart - Create account</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#0e3b22;--orange:#f26a0f;--cream:#fffaf4;--ink:#1c1c1c;--line:#e3e3e3;--muted:#7a7a7a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins','Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+.page{display:grid;grid-template-columns:1fr;min-height:100vh}
+.left{position:relative;min-height:180px;overflow:hidden;background:#f7e6d3}
+.left img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 44%}
+.left:after{position:absolute;inset:0;content:"";background:linear-gradient(90deg,rgba(14,59,34,.24),transparent 75%)}
+.right{display:flex;justify-content:center;align-items:flex-start;padding:20px 16px 40px;overflow:auto}
+.panel{width:100%;max-width:560px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;font-weight:500;color:#222;margin:8px 0 14px}
+.top a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;background:var(--green);color:#fff;border:1px solid var(--green);padding:8px 18px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:600;white-space:nowrap}
+.top a:hover{background:#185332}.top a:focus-visible{outline:3px solid #f6a56f;outline-offset:3px}
+.signup-message{margin:0 0 14px;padding:13px 15px;border:1px solid #b8d5bd;border-radius:6px;background:#f0f8f1;color:#194a2a;font-size:13px;line-height:1.55}
+.signup-message[hidden]{display:none}.signup-message a{display:inline-block;margin-top:5px;color:#0e3b22;font-weight:600}
+.card{background:#fff;border-radius:10px;padding:28px 22px 26px;box-shadow:0 10px 40px rgba(0,0,0,.05)}
+.card h1{text-align:center;font-size:28px;line-height:1.25;font-weight:700;color:#111}
+.sub{text-align:center;color:#888;font-size:15px;line-height:1.5;margin:5px 0 20px}
+label.l{display:block;font-weight:600;font-size:14px;line-height:20px;margin-bottom:5px;color:#222}
+.field{display:flex;align-items:center;gap:12px;border:1px solid #d9d9d9;border-radius:6px;height:44px;padding:0 13px;margin-bottom:14px;color:#666;background:#fff}
+.field:focus-within{border-color:var(--orange)}
+.field>svg{width:21px;height:21px;flex:none}
+.field input{border:0;outline:0;flex:1;min-width:0;font-size:15px;font-family:inherit;background:transparent;color:#222}
+.field input::placeholder{color:#999}
+.field .eye{background:none;border:0;cursor:pointer;color:#555;display:grid;place-items:center;flex:none}
+.field .eye svg{width:21px;height:21px}
+.phone{display:flex;align-items:center;gap:8px;flex:none;color:#222;font-size:14px}
+.phone svg{width:24px;height:17px}
+.divider{width:1px;height:22px;background:#d5d5d5;flex:none}
+.terms{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;color:#333;margin:2px 0 16px;cursor:pointer}
+.terms input{width:17px;height:17px;accent-color:var(--orange);flex:none;margin-top:2px}
+.terms a{color:#e2560a;text-decoration:underline}
+.cta{width:100%;height:50px;border:0;border-radius:6px;background:var(--orange);color:#fff;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit}
+.cta:hover{background:#e05e07}.cta:disabled{opacity:.7;cursor:wait}
+.or{display:flex;align-items:center;gap:18px;color:#777;font-size:13px;margin:15px 0 11px}
+.or:before,.or:after{content:"";flex:1;height:1px;background:var(--line)}
+.google{display:flex;align-items:center;justify-content:center;gap:11px;width:100%;height:48px;border:1px solid #d9d9d9;border-radius:6px;background:#fff;font-size:15px;font-weight:500;color:#222;cursor:pointer;font-family:inherit}
+.google:hover{background:#fafafa}
+.safe{display:flex;align-items:center;gap:18px;background:#fcf3ea;border-radius:8px;padding:14px 18px;margin-top:16px}
+.safe>svg{width:34px;height:34px;flex:none}
+.safe b{font-weight:500;font-size:13px;display:block;color:#222}.safe small{color:#888;font-size:12px;display:block;margin-top:2px}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,24px);background:#222;color:#fff;padding:12px 18px;border-radius:8px;font-size:13px;opacity:0;transition:.2s;z-index:99;max-width:90vw;text-align:center;pointer-events:none}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+@media(min-width:900px){.page{grid-template-columns:48% 52%;height:100vh}.left{min-height:100vh}.right{align-items:flex-start;padding:28px}.panel{max-width:560px}.card{padding:30px 48px}.card h1{font-size:30px}}
+@media(max-width:420px){.right{padding:14px 12px 30px}.card{padding:24px 18px}.top{font-size:13px}.top a{font-size:13px;padding:6px 10px}.safe{gap:12px;padding:12px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="left" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1400&q=85" alt="">
+  </section>
+  <section class="right">
+    <div class="panel">
+      <div class="top"><span>Already have an account?</span><a href="Mohalla_Mart.html">Log in <span aria-hidden="true">&nbsp;→</span></a></div>
+      <div id="signup-message" class="signup-message" role="status" aria-live="polite" hidden></div>
+      <div class="card">
+        <h1>Create your account</h1>
+        <p class="sub">Join your neighbourhood in minutes</p>
+        <form id="signup" novalidate>
+          <label class="l" for="fn">Full name</label>
+          <div class="field"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><input id="fn" type="text" placeholder="Enter your full name" autocomplete="name" required></div>
+          <label class="l" for="em">Email address</label>
+          <div class="field"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><input id="em" type="email" placeholder="you@example.com" autocomplete="off" required></div>
+          <label class="l" for="ph">Phone number</label>
+          <div class="field"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span class="phone"><svg viewBox="0 0 26 18" aria-hidden="true"><rect width="26" height="6" fill="#ff9933"/><rect y="6" width="26" height="6" fill="#fff"/><rect y="12" width="26" height="6" fill="#138808"/><circle cx="13" cy="9" r="2.3" fill="none" stroke="#000080" stroke-width=".7"/></svg>+91</span><span class="divider"></span><input id="ph" type="tel" inputmode="numeric" maxlength="10" placeholder="Enter your phone number" autocomplete="off" required></div>
+          <label class="l" for="pw">Password</label>
+          <div class="field"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><input id="pw" type="password" placeholder="Create a password" autocomplete="new-password" required><button type="button" class="eye" aria-label="Show password"><svg fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M10.6 6.2A9.7 9.7 0 0 1 12 6c5 0 8.5 4 9.5 6-.4.8-1.3 2.1-2.7 3.3M6.5 7.8C4.5 9.2 3.3 11 2.5 12c1 2 4.5 6 9.5 6 1.5 0 2.8-.3 4-.9M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button></div>
+          <label class="l" for="pw2">Confirm password</label>
+          <div class="field"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><input id="pw2" type="password" placeholder="Confirm your password" autocomplete="new-password" required><button type="button" class="eye" aria-label="Show password"><svg fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M10.6 6.2A9.7 9.7 0 0 1 12 6c5 0 8.5 4 9.5 6-.4.8-1.3 2.1-2.7 3.3M6.5 7.8C4.5 9.2 3.3 11 2.5 12c1 2 4.5 6 9.5 6 1.5 0 2.8-.3 4-.9M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button></div>
+          <label class="terms"><input type="checkbox" id="tc" required><span>I agree to the <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a></span></label>
+          <button class="cta" type="submit" id="go">Create account &nbsp; &rarr;</button>
+        </form>
+        <div class="or">OR</div>
+        <button class="google" type="button" id="gg"><svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.8 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>Continue with Google</button>
+        <div class="safe"><svg fill="none" stroke="#222" stroke-width="1.6" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Local demo account</b><small>Your password is stored as a hash in the local JSON file.</small></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+var toastTimer;
+function showToast(message){var toast=document.getElementById('toast');toast.textContent=message;toast.classList.add('on');clearTimeout(toastTimer);toastTimer=setTimeout(function(){toast.classList.remove('on')},4200)}
+document.querySelectorAll('.eye').forEach(function(button){button.addEventListener('click',function(){var input=button.parentElement.querySelector('input');var show=input.type==='password';input.type=show?'text':'password';button.setAttribute('aria-label',show?'Hide password':'Show password')})});
+document.getElementById('ph').addEventListener('input',function(){this.value=this.value.replace(/\D/g,'').slice(0,10)});
+var homeUrl=new URL('Mohalla_Mart.html',location.href).href;
+var supabaseClient=supabase.createClient('https://iqqnfhtamgnsqdomokki.supabase.co','sb_publishable_i8koVNAu3nLfhTg4aqtAUg_J13AMQfT');
+document.getElementById('signup').addEventListener('submit',async function(event){
+  event.preventDefault();
+  var name=document.getElementById('fn').value.trim();
+  var email=document.getElementById('em').value.trim();
+  var phone=document.getElementById('ph').value.trim();
+  var password=document.getElementById('pw').value;
+  var confirmPassword=document.getElementById('pw2').value;
+  if(!name)return showToast('Please enter your full name.');
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))return showToast('Please enter a valid email address.');
+  if(!/^[6-9]\d{9}$/.test(phone))return showToast('Please enter a valid 10-digit phone number.');
+  if(password.length<6)return showToast('Password must be at least 6 characters.');
+  if(password!==confirmPassword)return showToast('Passwords do not match.');
+  if(!document.getElementById('tc').checked)return showToast('Please agree to the Terms of Service and Privacy Policy.');
+  var button=document.getElementById('go');button.disabled=true;button.textContent='Creating account...';
+  try{
+    var response=await fetch('http://127.0.0.1:5000/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({full_name:name,email:email,phone:'+91'+phone,password:password})});
+    var account=await response.json();
+    if(!response.ok||!account.success){showToast(account.message||'Could not create account.');return}
+    try{sessionStorage.setItem('mohalla_local_signup_user',JSON.stringify(account.user))}catch(error){showToast('Account created. Please log in with your email and password.');return}
+    showToast('Account created. Opening Mohalla Mart...');setTimeout(function(){location.replace(homeUrl)},700);
+  }catch(error){showToast('Unable to reach the local account service. Please try again.')}finally{
+    document.getElementById('pw').value='';document.getElementById('pw2').value='';
+    button.disabled=false;button.innerHTML='Create account &nbsp; &rarr;';
+  }
+});
+document.getElementById('gg').addEventListener('click',async function(){
+  try{var result=await supabaseClient.auth.signInWithOAuth({provider:'google',options:{redirectTo:homeUrl}});if(result.error)showToast(result.error.message||'Google sign-up failed.')}
+  catch(error){showToast('Unable to start Google sign-up.')}
+});
+window.addEventListener('pageshow',function(){document.getElementById('pw').value='';document.getElementById('pw2').value=''});
+</script>
+</body>
+</html>
